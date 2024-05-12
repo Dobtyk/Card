@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Deck
 {
@@ -43,6 +44,18 @@ namespace Deck
                 {
                     _data.Factor = value;
                     CurrentCombinationFactorChanged?.Invoke(value);
+                }
+            }
+        }
+
+        public List<SlotCard> Cards
+        {
+            get => _data.Cards;
+            set
+            {
+                if (_data.Cards != value)
+                {
+                    _data.Cards = value;
                 }
             }
         }

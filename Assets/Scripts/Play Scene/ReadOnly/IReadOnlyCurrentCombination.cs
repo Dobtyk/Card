@@ -12,5 +12,6 @@ namespace Deck
         public string Name { get; }
         public int Chips { get; }
         public int Factor { get; }
+        List<SlotCard> Cards { get; }
     }
 }

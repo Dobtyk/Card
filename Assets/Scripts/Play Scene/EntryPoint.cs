@@ -20,14 +20,17 @@ namespace Deck
 
         List<int> _selectedÑardsIndex = new();
 
-
+        void Awake()
+        {
+            FirstLoadLevel();
+        }
 
         void Start()
         {
-            LoadLevel();
+            
         }
 
-        private void LoadLevel()
+        private void FirstLoadLevel()
         {
             _deckRound.CardsDeckRound = DataHolder.Deck.CardsDeck.ToList();
             _playerHand.CardsPlayerHand = _deckRound.TakeRandomCards(8);
@@ -35,7 +38,7 @@ namespace Deck
             _screenPlayController = new ScreenPlayController(_screenPlayView, _playerHand, _currentCombination, _informationPlayer);
         }
 
-        private void InitializeLevel()
+        private void LoadLevel()
         {
             _deckRound.CardsDeckRound = DataHolder.Deck.CardsDeck.ToList();
             var randomCards = _deckRound.TakeRandomCards(8);
@@ -61,7 +64,6 @@ namespace Deck
                 _selectedÑardsIndex.Add(index);
                 _playerHand.CardsPlayerHand[index].IsSelected = true;
             }
-
             FindCurrentCombination();
         }
 
@@ -134,15 +136,15 @@ namespace Deck
             foreach (var item in _selectedÑardsIndex)
                 selectedÑards.Add(_playerHand.CardsPlayerHand[item]);
             var result = FindPokerHand.AnalyzeCombinations.Check(selectedÑards);
-            (_currentCombination.Name, _currentCombination.Chips, _currentCombination.Factor) = (result.Item1, result.Item2, result.Item3);
+            (_currentCombination.Name, _currentCombination.Chips, _currentCombination.Factor, _currentCombination.Cards) = (result.Item1, result.Item2, result.Item3, result.Item4);
         }
 
         int CountPlayerPoints()
         {
             var chips = _currentCombination.Chips;
             var factor = _currentCombination.Factor;
-            foreach (var item in _selectedÑardsIndex)
-                chips += _playerHand.CardsPlayerHand[item].Points;
+            foreach (var item in _currentCombination.Cards)
+                chips += item.Points;
             return chips * factor;
         }
     }
