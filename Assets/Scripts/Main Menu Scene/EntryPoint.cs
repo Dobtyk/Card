@@ -13,7 +13,7 @@ public class EntryPoint : MonoBehaviour
     void InitializeNewGame()
     {
         DataHolder.CurrentLevel = 1;
-        DataHolder.PlayerPoints = 0;
+        DataHolder.PlayerPointsOnLevel = 0;
         DataHolder.MaxAmountHands = 3;
         DataHolder.MaxAmountResets = 3;
         DataHolder.CurrentLevelPoints = 200;
@@ -22,7 +22,7 @@ public class EntryPoint : MonoBehaviour
 
         DataHolder.NumberResetsUsed = 0;
         DataHolder.NumberCardsPlayed = 0;
-        DataHolder.NumberPointsScored = 0;
+        DataHolder.TotalNumberPointsScored = 0;
         DataHolder.LastCombination = "";
     }
 }

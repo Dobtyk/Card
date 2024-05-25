@@ -79,7 +79,7 @@ namespace Deck
 
             public int Chips => 60;
 
-            public int Factor => 70;
+            public int Factor => 7;
 
             public List<SlotCard> Cards => _cards;
 

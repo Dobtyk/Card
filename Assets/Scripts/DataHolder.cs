@@ -1,8 +1,10 @@
+using System;
+
 namespace Deck
 {
     static public class DataHolder
     {
-        static public int PlayerPoints;
+        public static int PlayerPointsOnLevel;       
         static public int MaxAmountHands;
         static public int MaxAmountResets;
         static public int MaxLevel;
@@ -12,7 +14,7 @@ namespace Deck
 
         static public int NumberResetsUsed;
         static public int NumberCardsPlayed;
-        static public int NumberPointsScored;
+        static public int TotalNumberPointsScored;
         static public string LastCombination;
 
     }

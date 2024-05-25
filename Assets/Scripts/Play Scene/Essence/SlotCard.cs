@@ -19,7 +19,6 @@ namespace Deck
                 if (_data.Suit != value)
                 {
                     _data.Suit = value;
-                    SlotCardChanged?.Invoke(this);
                 }
             }
         }
@@ -32,7 +31,6 @@ namespace Deck
                 if (_data.CardValue != value)
                 {
                     _data.CardValue = value;
-                    SlotCardChanged?.Invoke(this);
                 }
             }
         }
@@ -48,7 +46,18 @@ namespace Deck
             }
         }
 
-        public Sprite Sprite { get; set; }
+        public Sprite Sprite
+        {
+            get => _data.Sprite;
+            set
+            {
+                if (_data.Sprite != value)
+                {
+                    _data.Sprite = value;
+                    SlotCardChanged?.Invoke(this);
+                }
+            }
+        }
 
         public bool IsSelected
         {

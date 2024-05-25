@@ -1,4 +1,4 @@
-using System;
+using System.Linq;
 
 namespace Deck
 {
@@ -16,6 +16,7 @@ namespace Deck
             informationPlayer.AmountHandsChanged += OnAmountHandsChanged;
             informationPlayer.PointsPlayerChanged += OnPointsPlayerChanged;
 
+            view.NameBlind = DefaultLevels.Levels.FirstOrDefault(level => level.NumberLevel == DataHolder.CurrentLevel).Name;
             view.CurrentLevelPoints = "Минимум очков\n" + DataHolder.CurrentLevelPoints;
             view.NumberLevel = DataHolder.CurrentLevel + "/" + DataHolder.MaxLevel;
             view.AmountHands = informationPlayer.AmountHands + "/" + DataHolder.MaxAmountHands;

@@ -6,9 +6,11 @@ namespace Deck
         public CurrentCombinationController(IReadOnlyCurrentCombination currentCombination, CurrentCombinationView view)
         {
             _view = view;
+
             currentCombination.CurrentCombinationNameChanged += OnCurrentCombinationChanged;
             currentCombination.CurrentCombinationChipsChanged += OnCurrentCombinationChipsChanged;
             currentCombination.CurrentCombinationFactorChanged += OnCurrentCombinationFactorChanged;
+
             view.NameCombination = currentCombination.Name;
             view.Chips = currentCombination.Chips.ToString();
             view.Factor = currentCombination.Factor.ToString();

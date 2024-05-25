@@ -3388,8 +3388,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -162.00006, y: 54.5}
-  m_SizeDelta: {x: -324, y: -31}
+  m_AnchoredPosition: {x: -202.00006, y: 53.500004}
+  m_SizeDelta: {x: -404, y: -33}
   m_Pivot: {x: 0.50000006, y: 0.49999994}
 --- !u!114 &821348787
 MonoBehaviour:
@@ -3411,7 +3411,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6ba6b96b1ded4844c9e378ae7f1fbdb9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4d18bf74f33d4ac409bab515785111ac, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4576,6 +4576,7 @@ MonoBehaviour:
   _pointsPlayer: {fileID: 1625180035}
   _numberlevel: {fileID: 386507590}
   _currentLevelPoints: {fileID: 117118903}
+  _nameBlind: {fileID: 2014449042}
   _currentCombinationView: {fileID: 1280328217}
 --- !u!1 &1177508656
 GameObject:
@@ -5236,6 +5237,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1383762390}
+  - component: {fileID: 1383762391}
   m_Layer: 5
   m_Name: Screen Victory
   m_TagString: Untagged
@@ -5263,6 +5265,18 @@ RectTransform:
   m_AnchoredPosition: {x: -0.000061035, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1383762391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383762389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05928e330da2f9843a8f539c7f6a4316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1524736522
 GameObject:
   m_ObjectHideFlags: 0
@@ -5481,7 +5495,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1912528588}
         m_TargetAssemblyTypeName: Deck.EntryPoint, Assembly-CSharp
-        m_MethodName: ClickOnLoadScene
+        m_MethodName: ClickOnButtonMainMenu
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6410,10 +6424,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2131095569}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -81.00006, y: 54.5}
-  m_SizeDelta: {x: -162, y: -31}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -81, y: 54.5}
+  m_SizeDelta: {x: 738, y: 39}
   m_Pivot: {x: 0.50000006, y: 0.49999994}
 --- !u!114 &1786626250
 MonoBehaviour:
@@ -6894,10 +6908,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1740724822}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -220.00006, y: 54}
-  m_SizeDelta: {x: -440, y: -32}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 230, y: 18.999996}
+  m_SizeDelta: {x: 460, y: 38}
   m_Pivot: {x: 0.50000006, y: 0.49999994}
 --- !u!114 &1911471258
 MonoBehaviour:
@@ -6968,8 +6982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _screenPlayView: {fileID: 1629824295}
   _screenDefeatView: {fileID: 939144997}
-  _screenDefeat: {fileID: 939144995}
-  _screenVictory: {fileID: 1383762389}
+  _screenVictoryView: {fileID: 1383762391}
 --- !u!4 &1912528589
 Transform:
   m_ObjectHideFlags: 0
@@ -7556,7 +7569,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1912528588}
         m_TargetAssemblyTypeName: Deck.EntryPoint, Assembly-CSharp
-        m_MethodName: ClickOnLoadScene
+        m_MethodName: ClickOnButtonPlayAgain
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
