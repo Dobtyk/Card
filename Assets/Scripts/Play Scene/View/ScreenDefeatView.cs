@@ -9,7 +9,6 @@ namespace Deck
         [SerializeField] TMP_Text _numberPointsScored;
         [SerializeField] TMP_Text _numberResetsUsed;
         [SerializeField] TMP_Text _numberCardsPlayed;
-        [SerializeField] TMP_Text _numberLevel;
 
         public string LastCombination
         {
@@ -33,12 +32,6 @@ namespace Deck
         {
             get => _numberCardsPlayed.text;
             set => _numberCardsPlayed.text = value;
-        }
-
-        public string NumberLevel
-        {
-            get => _numberLevel.text;
-            set => _numberLevel.text = value;
         }
     }
 }

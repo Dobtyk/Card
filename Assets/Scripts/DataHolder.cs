@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Deck
 {
@@ -17,5 +18,6 @@ namespace Deck
         static public int TotalNumberPointsScored;
         static public string LastCombination;
 
+        static public List<Buff> Buffs = new List<Buff>();
     }
 }

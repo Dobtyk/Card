@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Deck
@@ -9,26 +10,59 @@ namespace Deck
         Great
     }
 
-    public interface IBuff
+    public enum BuffType
+    { 
+        StaticBuff,
+        AfterCountingBuff,
+        BeforeCountingBuff
+    }
+
+    public interface IReadOnlyBuff
     {
+        event Action<bool> IsSelected;
+
         public string Description { get; }
 
-        public BuffDifficulty Type { get; }
+        public BuffDifficulty Difficulty { get; }
 
+        public BuffType Type { get; }
+
+        public bool IsSelect { get; }
     }
 
-    public interface IStaticBuff : IBuff
+    public class Buff : IReadOnlyBuff
     {
-        public void EnableBuff();
-    }
+        public string Description { get; set; }
 
-    public interface IAfterCountingBuff : IBuff
-    {
-        public void PlayBuff(IReadOnlyList<SlotCard> hand);
-    }
+        public BuffDifficulty Difficulty { get; set; }
 
-    public interface IBeforeCountingBuff : IBuff
-    {
-        public void PlayBuff(IReadOnlyList<SlotCard> hand);
+        public BuffType Type { get; set; }
+
+        public bool IsSelect
+        {
+            get => _isSelect;
+            set
+            {
+                if (_isSelect != value)
+                {
+                    _isSelect = value;
+                    IsSelected?.Invoke(value);
+                }
+            }
+        }
+
+        bool _isSelect;
+
+        public event Action<bool> IsSelected;
+
+        public virtual void EnableEffectBuff()
+        {
+            
+        }
+
+        public virtual (int, double) EnableEffectBuff(List<SlotCard> list)
+        {
+            return (0, 0);
+        }
     }
 }

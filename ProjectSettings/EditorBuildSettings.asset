@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Play Scene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Tournament Scene.unity
+    guid: 88a861ef4c5900b41b9a4f47117edef6
   m_configObjects: {}

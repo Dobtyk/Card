@@ -17,7 +17,7 @@ namespace Deck
 
         public class RoyalFlush : ICombinationAnalyzer
         {
-            public string Name => "Флеш-рояль";
+            public string Name => "Флеш-Рояль";
 
             public int Chips => 100;
 
@@ -50,7 +50,7 @@ namespace Deck
 
         public class StraightFlush : ICombinationAnalyzer
         {
-            public string Name => "Стрит-флеш";
+            public string Name => "Стрит-Флеш";
 
             public int Chips => 80;
 
@@ -103,7 +103,7 @@ namespace Deck
 
         public class FullHouse : ICombinationAnalyzer
         {
-            public string Name => "Фул-хаус";
+            public string Name => "Фул-Хаус";
 
             public int Chips => 40;
 

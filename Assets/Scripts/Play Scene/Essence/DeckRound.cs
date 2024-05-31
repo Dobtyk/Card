@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace Deck
 {
@@ -8,7 +7,7 @@ namespace Deck
     {
         public event Action<List<SlotCard>> DeckRoundChanged;
 
-        public List<SlotCard> CardsDeckRound 
+        public List<SlotCard> CardsDeckRound
         {
             get => _data.Cards;
             set

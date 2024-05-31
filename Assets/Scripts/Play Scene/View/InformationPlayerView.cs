@@ -11,7 +11,14 @@ namespace Deck
         [SerializeField] TMP_Text _numberlevel;
         [SerializeField] TMP_Text _currentLevelPoints;
         [SerializeField] TMP_Text _nameBlind;
+        [SerializeField] TMP_Text _numberCardsDeckRound;
         [SerializeField] CurrentCombinationView _currentCombinationView;
+
+        public string NumberCardsDeckRound
+        {
+            get => _numberCardsDeckRound.text;
+            set => _numberCardsDeckRound.text = value;
+        }
 
         public string NameBlind
         {

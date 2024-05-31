@@ -7,6 +7,7 @@ namespace Deck
         public event Action<int> AmountHandsChanged;
         public event Action<int> AmountResetsChanged;
         public event Action<int> PointsPlayerChanged;
+        public event Action<int> NumberCardsDeckRoundChanged;
 
         public int AmountHands
         {
@@ -43,6 +44,19 @@ namespace Deck
                 {
                     _data.PointsPlayer = value;
                     PointsPlayerChanged?.Invoke(value);
+                }
+            }
+        }
+
+        public int NumberCardsDeckRound
+        {
+            get => _data.NumberCardsDeckRound;
+            set
+            {
+                if (_data.NumberCardsDeckRound != value)
+                {
+                    _data.NumberCardsDeckRound = value;
+                    NumberCardsDeckRoundChanged?.Invoke(value);
                 }
             }
         }

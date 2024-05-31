@@ -24,7 +24,6 @@ namespace Deck
                 _view.NumberPointsScored = DataHolder.TotalNumberPointsScored.ToString();
                 _view.NumberResetsUsed = DataHolder.NumberResetsUsed.ToString();
                 _view.NumberCardsPlayed = DataHolder.NumberCardsPlayed.ToString();
-                _view.NumberLevel = DataHolder.CurrentLevel + "/" + DataHolder.MaxLevel;
             }
         }
     }

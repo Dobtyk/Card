@@ -15,15 +15,22 @@ namespace Deck
             informationPlayer.AmountResetsChanged += OnAmountResetsChanged;
             informationPlayer.AmountHandsChanged += OnAmountHandsChanged;
             informationPlayer.PointsPlayerChanged += OnPointsPlayerChanged;
+            informationPlayer.NumberCardsDeckRoundChanged += OnNumberCardsDeckRoundChanged;
 
             view.NameBlind = DefaultLevels.Levels.FirstOrDefault(level => level.NumberLevel == DataHolder.CurrentLevel).Name;
-            view.CurrentLevelPoints = "Минимум очков\n" + DataHolder.CurrentLevelPoints;
+            view.CurrentLevelPoints = DataHolder.CurrentLevelPoints.ToString();
             view.NumberLevel = DataHolder.CurrentLevel + "/" + DataHolder.MaxLevel;
             view.AmountHands = informationPlayer.AmountHands + "/" + DataHolder.MaxAmountHands;
             view.AmountResets = informationPlayer.AmountResets + "/" + DataHolder.MaxAmountResets;
             view.PointsPlayer = informationPlayer.PointsPlayer.ToString();
+            view.NumberCardsDeckRound = informationPlayer.NumberCardsDeckRound + "/52";
 
             _currentCombinationController = new CurrentCombinationController(currentCombination, view.CurrentCombinationView);
+        }
+
+        private void OnNumberCardsDeckRoundChanged(int amount)
+        {
+            _view.NumberCardsDeckRound = amount + "/52";
         }
 
         private void OnPointsPlayerChanged(int points)

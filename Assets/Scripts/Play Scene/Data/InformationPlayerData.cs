@@ -8,5 +8,6 @@ namespace Deck
         public int AmountHands;
         public int AmountResets;
         public int PointsPlayer;
+        public int NumberCardsDeckRound;
     }
 }
