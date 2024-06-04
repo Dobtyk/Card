@@ -48,7 +48,7 @@ namespace Deck
 
         void OnPointsPlayerChanged(int points)
         {
-            if (_informationPlayer.PointsPlayer >= DataHolder.CurrentLevelPoints && DataHolder.CurrentLevel <= 7)
+            if (_informationPlayer.PointsPlayer >= DefaultLevels.Levels.FirstOrDefault(level => level.NumberLevel == DataHolder.CurrentLevel).Points && DataHolder.CurrentLevel <= 7)
             {
                 _view.AmountPoints = _informationPlayer.PointsPlayer + " " + ChooseWord(_informationPlayer.PointsPlayer.ToString());
                 _view.NameBlind = DefaultLevels.Levels.FirstOrDefault(level => level.NumberLevel == DataHolder.CurrentLevel).Name;
@@ -60,6 +60,7 @@ namespace Deck
                 for (var i  = 0; i < 3; i++)
                 {     
                     _view.BuffsView.GetBuffView(i).Description = _buffs[i].Description;
+                    _view.BuffsView.GetBuffView(i).ImageSprite = _buffs[i].Sprite;
                 }
                
                 _view.gameObject.SetActive(true);

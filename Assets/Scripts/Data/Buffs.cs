@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 using static Deck.FindPokerHand;
 
 namespace Deck
@@ -38,6 +39,7 @@ namespace Deck
             Description = "Очки +100, если рука содержит пару (после подсчёта очков)";
             Difficulty = BuffDifficulty.Light;
             Type = BuffType.AfterCountingBuff;
+            Sprite = Resources.Load<Sprite>("Effects/Buffs/Pair100");
         }
 
         public override (int, double) EnableEffectBuff(List<SlotCard> hand)
@@ -57,6 +59,7 @@ namespace Deck
             Description = "Очки +100, если рука содержит две пары (после подсчёта очков)";
             Difficulty = BuffDifficulty.Light;
             Type = BuffType.AfterCountingBuff;
+            Sprite = Resources.Load<Sprite>("Effects/Buffs/TwoPairs100");
         }
 
         public override (int, double) EnableEffectBuff(List<SlotCard> hand)
@@ -76,6 +79,7 @@ namespace Deck
             Description = "Очки +100, если рука содержит тройку (после подсчёта очков)";
             Difficulty = BuffDifficulty.Light;
             Type = BuffType.AfterCountingBuff;
+            Sprite = Resources.Load<Sprite>("Effects/Buffs/Set100");
         }
 
         public override (int, double) EnableEffectBuff(List<SlotCard> hand)
@@ -95,6 +99,7 @@ namespace Deck
             Description = "Очки +20, множитель +1, если рука содержит пару (перед подсчётом очков)";
             Difficulty = BuffDifficulty.Light;
             Type = BuffType.BeforeCountingBuff;
+            Sprite = Resources.Load<Sprite>("Effects/Buffs/OnePair20");
         }
 
         public override (int, double) EnableEffectBuff(List<SlotCard> hand)
@@ -114,6 +119,7 @@ namespace Deck
             Description = "Очки +20, множитель +1.5, если рука содержит две пары (перед подсчётом очков)";
             Difficulty = BuffDifficulty.Light;
             Type = BuffType.BeforeCountingBuff;
+            Sprite = Resources.Load<Sprite>("Effects/Buffs/TwoPairs20");
         }
 
         public override (int, double) EnableEffectBuff(List<SlotCard> hand)
@@ -133,11 +139,44 @@ namespace Deck
             Description = "Очки +100 (после подсчёта очков)";
             Difficulty = BuffDifficulty.Medium;
             Type = BuffType.AfterCountingBuff;
+            Sprite = Resources.Load<Sprite>("Effects/Buffs/Get100");
         }
 
         public override (int, double) EnableEffectBuff(List<SlotCard> hand)
         {
             return (100, 0);
+        }
+    }
+
+    public class AmountHand1 : Buff
+    {
+        public AmountHand1()
+        {
+            Description = "Количество рук +1";
+            Difficulty = BuffDifficulty.Medium;
+            Type = BuffType.StaticBuff;
+            Sprite = Resources.Load<Sprite>("Effects/Buffs/AmountHand1");
+        }
+
+        public override void EnableEffectBuff()
+        {
+            DataHolder.MaxAmountHands += 1;
+        }
+    }
+
+    public class AmountReset1 : Buff
+    {
+        public AmountReset1()
+        {
+            Description = "Количество сбросов +1";
+            Difficulty = BuffDifficulty.Medium;
+            Type = BuffType.StaticBuff;
+            Sprite = Resources.Load<Sprite>("Effects/Buffs/AmountReset1");
+        }
+
+        public override void EnableEffectBuff()
+        {
+            DataHolder.MaxAmountResets += 1;
         }
     }
 
@@ -148,6 +187,7 @@ namespace Deck
             Description = "Очки +150, если рука содержит стрит (после подсчёта очков)";
             Difficulty = BuffDifficulty.Medium;
             Type = BuffType.AfterCountingBuff;
+            Sprite = Resources.Load<Sprite>("Effects/Buffs/Straight150");
         }
 
         public override (int, double) EnableEffectBuff(List<SlotCard> hand)
@@ -167,6 +207,7 @@ namespace Deck
             Description = "Очки +150, если рука содержит флеш (после подсчёта очков)";
             Difficulty = BuffDifficulty.Medium;
             Type = BuffType.AfterCountingBuff;
+            Sprite = Resources.Load<Sprite>("Effects/Buffs/Flush150");
         }
 
         public override (int, double) EnableEffectBuff(List<SlotCard> hand)
@@ -186,6 +227,7 @@ namespace Deck
             Description = "Очки +200, если рука содержит фулл-хаус (после подсчёта очков)";
             Difficulty = BuffDifficulty.Medium;
             Type = BuffType.AfterCountingBuff;
+            Sprite = Resources.Load<Sprite>("Effects/Buffs/FullHouse200");
         }
 
         public override (int, double) EnableEffectBuff(List<SlotCard> hand)
@@ -205,6 +247,7 @@ namespace Deck
             Description = "Очки +200, если рука содержит каре (после подсчёта очков)";
             Difficulty = BuffDifficulty.Medium;
             Type = BuffType.AfterCountingBuff;
+            Sprite = Resources.Load<Sprite>("Effects/Buffs/FourofAKind200");
         }
 
         public override (int, double) EnableEffectBuff(List<SlotCard> hand)
@@ -224,6 +267,7 @@ namespace Deck
             Description = "Очки +25, множитель +2, если рука содержит тройку (перед подсчётом очков)";
             Difficulty = BuffDifficulty.Medium;
             Type = BuffType.BeforeCountingBuff;
+            Sprite = Resources.Load<Sprite>("Effects/Buffs/Set25");
         }
 
         public override (int, double) EnableEffectBuff(List<SlotCard> hand)
@@ -243,6 +287,7 @@ namespace Deck
             Description = "Очки +25, множитель +2.5, если рука содержит стрит (перед подсчётом очков)";
             Difficulty = BuffDifficulty.Medium;
             Type = BuffType.BeforeCountingBuff;
+            Sprite = Resources.Load<Sprite>("Effects/Buffs/Straight25");
         }
 
         public override (int, double) EnableEffectBuff(List<SlotCard> hand)
@@ -255,36 +300,6 @@ namespace Deck
         }
     }
 
-    public class AmountHand1 : Buff
-    {
-        public AmountHand1()
-        {
-            Description = "Количество рук +1";
-            Difficulty = BuffDifficulty.Medium;
-            Type = BuffType.StaticBuff;
-        }
-
-        public override void EnableEffectBuff()
-        {
-            DataHolder.MaxAmountHands += 1;
-        }
-    }
-
-    public class AmountReset1 : Buff
-    {
-        public AmountReset1()
-        {
-            Description = "Количество сбросов +1";
-            Difficulty = BuffDifficulty.Medium;
-            Type = BuffType.StaticBuff;
-        }
-
-        public override void EnableEffectBuff()
-        {
-            DataHolder.MaxAmountResets += 1;
-        }
-    }
-
     public class Flush30 : Buff
     {
         public Flush30()
@@ -292,6 +307,7 @@ namespace Deck
             Description = "Очки +30, множитель +3, если рука содержит флеш (перед подсчётом очков)";
             Difficulty = BuffDifficulty.Great;
             Type = BuffType.BeforeCountingBuff;
+            Sprite = Resources.Load<Sprite>("Effects/Buffs/Flush30");
         }
 
         public override (int, double) EnableEffectBuff(List<SlotCard> hand)
@@ -311,6 +327,7 @@ namespace Deck
             Description = "Очки +30, множитель +3.5, если рука содержит фулл-хаус (перед подсчётом очков)";
             Difficulty = BuffDifficulty.Great;
             Type = BuffType.BeforeCountingBuff;
+            Sprite = Resources.Load<Sprite>("Effects/Buffs/FullHouse30");
         }
 
         public override (int, double) EnableEffectBuff(List<SlotCard> hand)
@@ -330,6 +347,7 @@ namespace Deck
             Description = "Очки +35, множитель +4, если рука содержит каре (перед подсчётом очков)";
             Difficulty = BuffDifficulty.Great;
             Type = BuffType.BeforeCountingBuff;
+            Sprite = Resources.Load<Sprite>("Effects/Buffs/FourofAKind35");
         }
 
         public override (int, double) EnableEffectBuff(List<SlotCard> hand)
@@ -349,6 +367,7 @@ namespace Deck
             Description = "Множитель + 4 (перед подсчётом очков)";
             Difficulty = BuffDifficulty.Great;
             Type = BuffType.BeforeCountingBuff;
+            Sprite = Resources.Load<Sprite>("Effects/Buffs/Factor4");
         }
 
         public override (int, double) EnableEffectBuff(List<SlotCard> hand)

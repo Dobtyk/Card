@@ -15,6 +15,8 @@ namespace Deck
             _informationPlayer = informationPlayer;
 
             informationPlayer.PointsPlayerChanged += OnPointsPlayerChanged;
+
+            FillBuffs();
         }
 
         string ChooseWord(string points)
@@ -37,7 +39,7 @@ namespace Deck
 
         void OnPointsPlayerChanged(int points)
         {
-            if (_informationPlayer.PointsPlayer >= DataHolder.CurrentLevelPoints && DataHolder.CurrentLevel == 8)
+            if (_informationPlayer.PointsPlayer >= DefaultLevels.Levels.FirstOrDefault(level => level.NumberLevel == DataHolder.CurrentLevel).Points && DataHolder.CurrentLevel == 8)
             {
                 _view.AmountPoints = _informationPlayer.PointsPlayer + " " + ChooseWord(_informationPlayer.PointsPlayer.ToString());
                 _view.NameBlind = DefaultLevels.Levels.FirstOrDefault(level => level.NumberLevel == DataHolder.CurrentLevel).Name;
@@ -45,6 +47,19 @@ namespace Deck
                
                 _view.gameObject.SetActive(true);
                 DataHolder.TotalNumberPointsScored += _informationPlayer.PointsPlayer;
+            }
+        }
+
+        void FillBuffs()
+        {
+            for (var i = 0; i < DataHolder.Buffs.Count; i++)
+            {
+                _view.Buffs.GetBuffView(i).Description = DataHolder.Buffs[i].Description;
+                _view.Buffs.GetBuffView(i).ImageSprite = DataHolder.Buffs[i].Sprite;
+            }
+            for (var i = 4; i >= DataHolder.Buffs.Count; i--)
+            {
+                _view.Buffs.GetBuffView(i).gameObject.SetActive(false);
             }
         }
     }

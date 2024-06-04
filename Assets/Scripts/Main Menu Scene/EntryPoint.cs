@@ -1,4 +1,5 @@
 using Deck;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,23 +7,17 @@ public class EntryPoint : MonoBehaviour
 {
     public void ClickOnButtonPlay(int numberScene)
     {
-        InitializeNewGame();
+        DataHolder.InitializeNewGame();
         SceneManager.LoadScene(numberScene);
     }
 
-    void InitializeNewGame()
+    public void ClickOnDiscoveries(GameObject gameObject)
     {
-        DataHolder.CurrentLevel = 1;
-        DataHolder.PlayerPointsOnLevel = 0;
-        DataHolder.MaxAmountHands = 3;
-        DataHolder.MaxAmountResets = 3;
-        DataHolder.CurrentLevelPoints = 200;
-        DataHolder.MaxLevel = 8;
-        DataHolder.Deck.CardsDeck = new DefaultDeck().Deck.Cards;
+        gameObject.SetActive(true);
+    }
 
-        DataHolder.NumberResetsUsed = 0;
-        DataHolder.NumberCardsPlayed = 0;
-        DataHolder.TotalNumberPointsScored = 0;
-        DataHolder.LastCombination = "";
+    public void ClickOnBack(GameObject gameObject)
+    {
+        gameObject.SetActive(false);
     }
 }

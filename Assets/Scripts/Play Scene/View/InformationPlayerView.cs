@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Deck
 {
@@ -13,6 +14,13 @@ namespace Deck
         [SerializeField] TMP_Text _nameBlind;
         [SerializeField] TMP_Text _numberCardsDeckRound;
         [SerializeField] CurrentCombinationView _currentCombinationView;
+        [SerializeField] Image _icon;
+
+        public Sprite Icon
+        {
+            get => _icon.sprite;
+            set => _icon.sprite = value;
+        }
 
         public string NumberCardsDeckRound
         {

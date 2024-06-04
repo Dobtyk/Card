@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Deck
 {
@@ -27,6 +28,8 @@ namespace Deck
 
         public BuffType Type { get; }
 
+        public Sprite Sprite { get; }
+
         public bool IsSelect { get; }
     }
 
@@ -37,6 +40,8 @@ namespace Deck
         public BuffDifficulty Difficulty { get; set; }
 
         public BuffType Type { get; set; }
+
+        public Sprite Sprite { get; set; }
 
         public bool IsSelect
         {

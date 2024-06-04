@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace Deck
 {
@@ -11,5 +12,6 @@ namespace Deck
         public int ChanceMediumBuff;
         public int ChanceGreatBuff;
         public string Name;
+        public Sprite Icon;
     }
 }

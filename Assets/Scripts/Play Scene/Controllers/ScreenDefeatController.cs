@@ -1,3 +1,5 @@
+using System.Linq;
+
 namespace Deck
 {
     public class ScreenDefeatController
@@ -15,7 +17,7 @@ namespace Deck
 
         void OnPointsPlayerChanged(int points)
         {
-            if (_informationPlayer.PointsPlayer < DataHolder.CurrentLevelPoints && _informationPlayer.AmountHands == 0)
+            if (_informationPlayer.PointsPlayer < DefaultLevels.Levels.FirstOrDefault(level => level.NumberLevel == DataHolder.CurrentLevel).Points && _informationPlayer.AmountHands == 0)
             {
                 _view.gameObject.SetActive(true);
                 DataHolder.TotalNumberPointsScored += _informationPlayer.PointsPlayer;

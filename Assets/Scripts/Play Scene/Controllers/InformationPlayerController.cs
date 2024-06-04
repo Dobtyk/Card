@@ -1,4 +1,5 @@
 using System.Linq;
+using UnityEngine;
 
 namespace Deck
 {
@@ -18,8 +19,9 @@ namespace Deck
             informationPlayer.NumberCardsDeckRoundChanged += OnNumberCardsDeckRoundChanged;
 
             view.NameBlind = DefaultLevels.Levels.FirstOrDefault(level => level.NumberLevel == DataHolder.CurrentLevel).Name;
-            view.CurrentLevelPoints = DataHolder.CurrentLevelPoints.ToString();
-            view.NumberLevel = DataHolder.CurrentLevel + "/" + DataHolder.MaxLevel;
+            view.Icon = DefaultLevels.Levels.FirstOrDefault(level => level.NumberLevel == DataHolder.CurrentLevel).Icon;
+            view.CurrentLevelPoints = DefaultLevels.Levels.FirstOrDefault(level => level.NumberLevel == DataHolder.CurrentLevel).Points.ToString();
+            view.NumberLevel = "Бой " + DataHolder.CurrentLevel;
             view.AmountHands = informationPlayer.AmountHands + "/" + DataHolder.MaxAmountHands;
             view.AmountResets = informationPlayer.AmountResets + "/" + DataHolder.MaxAmountResets;
             view.PointsPlayer = informationPlayer.PointsPlayer.ToString();

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -100,7 +99,7 @@ namespace Deck
             var chips = _currentCombination.Chips;
             double factor = _currentCombination.Factor;
             var points = 0;
-            for (var i = 0; i < DataHolder.Buffs.Count(); i++ )
+            for (var i = 0; i < DataHolder.Buffs.Count(); i++)
             {
                 var buff = DataHolder.Buffs[i];
                 var selectedÑards = new List<SlotCard>();
@@ -108,7 +107,7 @@ namespace Deck
                     selectedÑards.Add(_playerHand.CardsPlayerHand[item]);
 
                 if (buff.Type == BuffType.BeforeCountingBuff)
-                {       
+                {
                     (var extraChips, var extraFactor) = buff.EnableEffectBuff(selectedÑards);
                     (chips, factor) = (chips + extraChips, factor + extraFactor);
                 }
@@ -161,7 +160,7 @@ namespace Deck
         {
             DataHolder.Buffs.Add(_buffs[index]);
             _buffs[index].IsSelect = true;
-            if (_buffs[index].Type == BuffType.StaticBuff )
+            if (_buffs[index].Type == BuffType.StaticBuff)
             {
                 _buffs[index].EnableEffectBuff();
             }
@@ -205,7 +204,7 @@ namespace Deck
             {
                 _screenCardCombo.SetActive(true);
             }
-            
+
         }
 
         public void ClickOnButtonNext()
@@ -247,19 +246,13 @@ namespace Deck
 
         public void ClickOnButtonPlayAgain(int numberScene)
         {
-            DataHolder.CurrentLevel = 1;
-            DataHolder.TotalNumberPointsScored = 0;
-            DataHolder.MaxAmountHands = 3;
-            DataHolder.MaxAmountResets = 3;
-            DataHolder.CurrentLevelPoints = DefaultLevels.Levels.FirstOrDefault(level => level.NumberLevel == DataHolder.CurrentLevel).Points;
-            DataHolder.Buffs = new List<Buff>();
+            DataHolder.InitializeNewGame();
             SceneManager.LoadScene(numberScene);
         }
 
         public void ClickOnButtonNext(int numberScene)
         {
             DataHolder.CurrentLevel += 1;
-            DataHolder.CurrentLevelPoints = DefaultLevels.Levels.FirstOrDefault(level => level.NumberLevel == DataHolder.CurrentLevel).Points;
             SceneManager.LoadScene(numberScene);
         }
     }

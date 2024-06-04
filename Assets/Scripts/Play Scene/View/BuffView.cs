@@ -1,9 +1,16 @@
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuffView : MonoBehaviour
 {
-    [SerializeField] TMP_Text _description;
+    [SerializeField] TooltipTextUI _description;
+    [SerializeField] Image _image;
+
+    public Sprite ImageSprite
+    {
+        get => _image.sprite;
+        set => _image.sprite = value;
+    }
 
     public string Description
     {
