@@ -7,7 +7,7 @@ namespace Deck
     {
         [SerializeField] TMP_Text _amountPoints;
         [SerializeField] TMP_Text _nameBlind;
-        [SerializeField] BuffsView _buffs;
+        [SerializeField] EffectsView _buffs;
 
         public string AmountPoints
         {
@@ -21,7 +21,7 @@ namespace Deck
             set => _nameBlind.text = value;
         }
 
-        public BuffsView Buffs
+        public EffectsView Buffs
         {
             get => _buffs;
             set => _buffs = value;

@@ -1,3 +1,5 @@
+using InstantGamesBridge;
+using InstantGamesBridge.Modules.Leaderboard;
 using System.Linq;
 
 namespace Deck
@@ -26,6 +28,8 @@ namespace Deck
                 _view.NumberPointsScored = DataHolder.TotalNumberPointsScored.ToString();
                 _view.NumberResetsUsed = DataHolder.NumberResetsUsed.ToString();
                 _view.NumberCardsPlayed = DataHolder.NumberCardsPlayed.ToString();
+
+                Bridge.leaderboard.SetScore(new SetScoreYandexOptions(DataHolder.TotalNumberPointsScored, "MaximumPoints"));
             }
         }
     }

@@ -6,6 +6,7 @@ namespace Deck
     {
         [SerializeField] PlayerHandView _playerHandView;
         [SerializeField] InformationPlayerView _informationPlayerView;
+        [SerializeField] EffectsView _buffsView;
 
         public PlayerHandView PlayerHandView
         {
@@ -15,6 +16,12 @@ namespace Deck
         public InformationPlayerView InformationPlayerView
         {
             get => _informationPlayerView;
+        }
+
+        public EffectsView BuffsView
+        {
+            get => _buffsView;
+            set => _buffsView = value;
         }
     }
 }

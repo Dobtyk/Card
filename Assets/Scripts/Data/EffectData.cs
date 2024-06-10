@@ -18,7 +18,7 @@ namespace Deck
         BeforeCountingBuff
     }
 
-    public interface IReadOnlyBuff
+    public interface IReadOnlyEffect
     {
         event Action<bool> IsSelected;
 
@@ -31,9 +31,11 @@ namespace Deck
         public Sprite Sprite { get; }
 
         public bool IsSelect { get; }
+
+        public int Id { get;  }
     }
 
-    public class Buff : IReadOnlyBuff
+    public class Effect : IReadOnlyEffect
     {
         public string Description { get; set; }
 
@@ -42,6 +44,8 @@ namespace Deck
         public BuffType Type { get; set; }
 
         public Sprite Sprite { get; set; }
+
+        public int Id { get; set; }
 
         public bool IsSelect
         {
@@ -65,9 +69,15 @@ namespace Deck
             
         }
 
-        public virtual (int, double) EnableEffectBuff(List<SlotCard> list)
+        /// <returns> ортеж, где 1-ый элемент - количество, добавл€емых к очкам, где 2-ой элемент - количество, добавл€емых к множителю, где 3-ий элемент - количество, умножаемое на множитель.</returns>
+        public virtual (int, double, double) EnableEffectBuff(List<SlotCard> list)
         {
-            return (0, 0);
+            return (0, 0, 0);
+        }
+
+        public virtual List<SlotCard> EnableEffectDebuff(List<SlotCard> list)
+        {
+            return null;
         }
     }
 }

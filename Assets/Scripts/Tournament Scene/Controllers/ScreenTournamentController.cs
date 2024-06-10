@@ -36,6 +36,11 @@ namespace Deck
             enemyView.NumberFight = "Бой " + DataHolder.CurrentLevel + "." + DefaultLevels.Levels.FirstOrDefault(level => level.NumberLevel == DataHolder.CurrentLevel).Name;
             enemyView.MinimumPoints = DefaultLevels.Levels.FirstOrDefault(level => level.NumberLevel == DataHolder.CurrentLevel).Points.ToString();
             enemyView.NumberVictories = "Побед: " + (DataHolder.CurrentLevel - 1);
+
+            if (DataHolder.CurrentLevel == 8)
+            {
+                enemyView.Description = DataHolder.Debuff.Description;
+            }
         }
 
         void FillBuffs()

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Deck
@@ -8,9 +9,9 @@ namespace Deck
     {
         readonly ScreenVictoryView _view;
         readonly InformationPlayer _informationPlayer;
-        readonly List<Buff> _buffs;
+        readonly List<Effect> _buffs;
 
-        public ScreenVictoryController(ScreenVictoryView view, InformationPlayer informationPlayer, List<Buff> buffs)
+        public ScreenVictoryController(ScreenVictoryView view, InformationPlayer informationPlayer, List<Effect> buffs)
         {
             _view = view;
             _informationPlayer = informationPlayer;
@@ -65,6 +66,12 @@ namespace Deck
                
                 _view.gameObject.SetActive(true);
                 DataHolder.TotalNumberPointsScored += _informationPlayer.PointsPlayer;
+                if (DataHolder.CurrentLevel == 7)
+                {
+                    var debuffs = new List<Effect> { new Heart(), new Diamond(), new Club(), new Spade() };
+                    var random = new Random();
+                    DataHolder.Debuff = debuffs[random.Next(0, debuffs.Count)];
+                }
             }
         }
     }

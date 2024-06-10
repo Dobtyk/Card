@@ -6,8 +6,8 @@ namespace Deck
     public enum SuitType
     {
         Diamond,
-        Club,
         Heart,
+        Club,
         Spade
     }
 

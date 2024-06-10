@@ -4,7 +4,7 @@ using UnityEngine;
 public class ScreenTournamentView : MonoBehaviour
 {
     [SerializeField] ItemsView _itemsView;
-    [SerializeField] BuffsView _buffsView;
+    [SerializeField] EffectsView _buffsView;
     [SerializeField] EnemyView _enemyView;
     [SerializeField] EnemyView _enemyViewDebuff;
     [SerializeField] GameObject _indicator;
@@ -15,7 +15,7 @@ public class ScreenTournamentView : MonoBehaviour
         set => _itemsView = value;
     }
 
-    public BuffsView BuffsView
+    public EffectsView BuffsView
     {
         get => _buffsView;
         set => _buffsView = value;

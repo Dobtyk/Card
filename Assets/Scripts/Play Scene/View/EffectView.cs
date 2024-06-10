@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuffView : MonoBehaviour
+public class EffectView : MonoBehaviour
 {
     [SerializeField] TooltipTextUI _description;
     [SerializeField] Image _image;

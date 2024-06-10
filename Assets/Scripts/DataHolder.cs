@@ -16,23 +16,25 @@ namespace Deck
         static public int TotalNumberPointsScored;
         static public string LastCombination;
 
-        static public List<Buff> Buffs;
+        static public List<Effect> Buffs;
+        static public Effect Debuff;
 
         public static void InitializeNewGame()
         {
-            DataHolder.CurrentLevel = 1;
-            DataHolder.PlayerPointsOnLevel = 0;
-            DataHolder.MaxAmountHands = 3;
-            DataHolder.MaxAmountResets = 3;
-            DataHolder.MaxLevel = 8;
-            DataHolder.Deck = new Deck(new DeckData() { Cards = new DefaultDeck().Deck.Cards });
-            DataHolder.Buffs = new List<Buff>();
+            CurrentLevel = 1;
+            PlayerPointsOnLevel = 0;
+            MaxAmountHands = 3;
+            MaxAmountResets = 3;
+            MaxLevel = 8;
+            Deck = new Deck(new DeckData() { Cards = new DefaultDeck().Deck.Cards });
+            Buffs = new List<Effect>();
+            Debuff = null;
 
 
-            DataHolder.NumberResetsUsed = 0;
-            DataHolder.NumberCardsPlayed = 0;
-            DataHolder.TotalNumberPointsScored = 0;
-            DataHolder.LastCombination = "";
+            NumberResetsUsed = 0;
+            NumberCardsPlayed = 0;
+            TotalNumberPointsScored = 0;
+            LastCombination = "";
         }
     }
 }

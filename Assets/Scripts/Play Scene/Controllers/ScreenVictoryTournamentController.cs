@@ -1,3 +1,5 @@
+using InstantGamesBridge.Modules.Leaderboard;
+using InstantGamesBridge;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,6 +49,9 @@ namespace Deck
                
                 _view.gameObject.SetActive(true);
                 DataHolder.TotalNumberPointsScored += _informationPlayer.PointsPlayer;
+
+                Bridge.leaderboard.SetScore(new SetScoreYandexOptions(DataHolder.TotalNumberPointsScored, "MaximumPoints"));
+                Yandexholder.SaveDebuffs(new List<Effect>{ DataHolder.Debuff});
             }
         }
 

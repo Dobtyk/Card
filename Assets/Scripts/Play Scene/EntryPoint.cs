@@ -19,7 +19,7 @@ namespace Deck
         PlayerHand _playerHand = new PlayerHand(new PlayerHandData());
         CurrentCombination _currentCombination = new CurrentCombination(new CombinationData());
         InformationPlayer _informationPlayer;
-        List<Buff> _buffs;
+        List<Effect> _buffs;
 
         ScreenPlayController _screenPlayController;
         ScreenDefeatController _screenDefeatController;
@@ -34,13 +34,14 @@ namespace Deck
             LoadLevel();
         }
 
-        private void LoadLevel()
+        void LoadLevel()
         {
             foreach (var item in DataHolder.Deck.CardsDeck)
             {
                 _deckRound.CardsDeckRound.Add(new SlotCard(new CardData { Suit = item.Suit, CardValue = item.CardValue, Points = item.Points, Sprite = item.Sprite }));
             }
             _playerHand.CardsPlayerHand = _deckRound.TakeRandomCards(8);
+            SortCards();
             _informationPlayer = new InformationPlayer(new InformationPlayerData { AmountHands = DataHolder.MaxAmountHands, AmountResets = DataHolder.MaxAmountResets, NumberCardsDeckRound = 44 });
             _buffs = GetBuffs();
 
@@ -51,19 +52,27 @@ namespace Deck
             _screenVictoryTournamentController = new ScreenVictoryTournamentController(_screenVictoryTournamentView, _informationPlayer);
         }
 
-        public void ClickOnCard(int index)
+        void SortCards()
         {
-            if (_selectedÑardsIndex.Contains(index))
+            var cards = new List<SlotCard>();
+            for (var i = 0; i < _playerHand.CardsPlayerHand.Count; i++)
             {
-                _playerHand.CardsPlayerHand[index].IsSelected = false;
-                _selectedÑardsIndex.Remove(index);
+                cards.Add(new SlotCard(new CardData()));
+                cards[i].IsSelected = _playerHand.CardsPlayerHand[i].IsSelected;
+                cards[i].Suit = _playerHand.CardsPlayerHand[i].Suit;
+                cards[i].CardValue = _playerHand.CardsPlayerHand[i].CardValue;
+                cards[i].Points = _playerHand.CardsPlayerHand[i].Points;
+                cards[i].Sprite = _playerHand.CardsPlayerHand[i].Sprite;
             }
-            else if (_selectedÑardsIndex.Count < 5)
+            cards.Sort();
+            for (var i = 0; i < _playerHand.CardsPlayerHand.Count; i++)
             {
-                _selectedÑardsIndex.Add(index);
-                _playerHand.CardsPlayerHand[index].IsSelected = true;
+                _playerHand.CardsPlayerHand[i].IsSelected = cards[i].IsSelected;
+                _playerHand.CardsPlayerHand[i].Suit = cards[i].Suit;
+                _playerHand.CardsPlayerHand[i].CardValue = cards[i].CardValue;
+                _playerHand.CardsPlayerHand[i].Points = cards[i].Points;
+                _playerHand.CardsPlayerHand[i].Sprite = cards[i].Sprite;
             }
-            FindCurrentCombination();
         }
 
         void UpdateCurrentHand()
@@ -77,6 +86,7 @@ namespace Deck
                 _playerHand.CardsPlayerHand[_selectedÑardsIndex[i]].Points = randomCards[i].Points;
                 _playerHand.CardsPlayerHand[_selectedÑardsIndex[i]].Sprite = randomCards[i].Sprite;
             }
+            SortCards();
             _selectedÑardsIndex.Clear();
             FindCurrentCombination();
         }
@@ -86,10 +96,10 @@ namespace Deck
             var selectedÑards = new List<SlotCard>();
             foreach (var item in _selectedÑardsIndex)
             {
-                if (DataHolder.CurrentLevel == 8 && _playerHand.CardsPlayerHand[item].Suit == SuitType.Club)
-                    continue;
                 selectedÑards.Add(_playerHand.CardsPlayerHand[item]);
             }
+            if (DataHolder.Debuff != null)
+                selectedÑards = DataHolder.Debuff.EnableEffectDebuff(selectedÑards);
             var result = FindPokerHand.AnalyzeCombinations.Check(selectedÑards);
             (_currentCombination.Name, _currentCombination.Chips, _currentCombination.Factor, _currentCombination.Cards) = (result.Item1, result.Item2, result.Item3, result.Item4);
         }
@@ -99,6 +109,7 @@ namespace Deck
             var chips = _currentCombination.Chips;
             double factor = _currentCombination.Factor;
             var points = 0;
+            var factorMultiply = 1d;
             for (var i = 0; i < DataHolder.Buffs.Count(); i++)
             {
                 var buff = DataHolder.Buffs[i];
@@ -108,7 +119,8 @@ namespace Deck
 
                 if (buff.Type == BuffType.BeforeCountingBuff)
                 {
-                    (var extraChips, var extraFactor) = buff.EnableEffectBuff(selectedÑards);
+                    (var extraChips, var extraFactor, var extraFactorMultiply) = buff.EnableEffectBuff(selectedÑards);
+                    factorMultiply *= extraFactorMultiply;
                     (chips, factor) = (chips + extraChips, factor + extraFactor);
                 }
                 else if (buff.Type == BuffType.AfterCountingBuff)
@@ -119,10 +131,10 @@ namespace Deck
 
             foreach (var item in _currentCombination.Cards)
                 chips += item.Points;
-            return (int)(chips * factor + points);
+            return (int)(chips * factor * factorMultiply + points);
         }
 
-        Buff GetBuff(Buffs buffs)
+        Effect GetBuff(Effects buffs)
         {
             var random = new System.Random();
             BuffDifficulty difficulty;
@@ -145,10 +157,10 @@ namespace Deck
             return result;
         }
 
-        List<Buff> GetBuffs()
+        List<Effect> GetBuffs()
         {
-            var result = new List<Buff>();
-            var buffs = new Buffs();
+            var result = new List<Effect>();
+            var buffs = new Effects();
             for (var i = 0; i < 3; i++)
             {
                 result.Add(GetBuff(buffs));
@@ -164,7 +176,30 @@ namespace Deck
             {
                 _buffs[index].EnableEffectBuff();
             }
+            Yandexholder.SaveBuffs(DataHolder.Buffs);
         }
+
+        public void ClickOnCard(int index)
+        {
+            if (_selectedÑardsIndex.Contains(index))
+            {
+                _playerHand.CardsPlayerHand[index].IsSelected = false;
+                _selectedÑardsIndex.Remove(index);
+            }
+            else if (_selectedÑardsIndex.Count < 5)
+            {
+                _selectedÑardsIndex.Add(index);
+                _playerHand.CardsPlayerHand[index].IsSelected = true;
+            }
+            FindCurrentCombination();
+        }
+
+
+
+
+
+
+
 
         public void ClickOnButtonPlayHand()
         {
@@ -254,6 +289,11 @@ namespace Deck
         {
             DataHolder.CurrentLevel += 1;
             SceneManager.LoadScene(numberScene);
+        }
+
+        public void ClickOnButtonBackComboCards(GameObject gameObject)
+        {
+            gameObject.SetActive(false);
         }
     }
 }

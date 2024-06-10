@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Deck
 {
-    public class SlotCard : IReadOnlySlotCard
+    public class SlotCard : IReadOnlySlotCard, IComparable<SlotCard>
     {
         public event Action<SlotCard> SlotCardChanged;
         public event Action<bool> SlotCardChangedSelect;
@@ -76,6 +76,15 @@ namespace Deck
         {
             _data = data;
             _isSelected = false;
+        }
+
+        public int CompareTo(SlotCard other)
+        {
+            //int suitComparison = Suit.CompareTo(other.Suit);
+            //if (suitComparison != 0) Это по мастям
+            //    return suitComparison;
+
+            return CardValue.CompareTo(other.CardValue);
         }
     }
 }
