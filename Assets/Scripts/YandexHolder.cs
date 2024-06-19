@@ -11,20 +11,13 @@ static public class Yandexholder
     static public List<Effect> KnowBuffs;
     static public List<Effect> KnowDebuffs;
     static public List<LeaderboardEntry> Players;
+    static public int ScorePlayer;
 
-    static public void LoadPlayers()
+    static public void LoadInformation()
     {
-        var options = new GetEntriesYandexOptions("MaximumPoints", true, 6, 0);
-        Bridge.leaderboard.GetEntries(OnGetEntriesComplete, options);
-    }
-
-    static public void LoadBuffs()
-    {
-        Bridge.storage.Get("buffs", OnStorageGetCompleted);
-    }
-
-    static public void LoadDebuffs()
-    {
+        Bridge.leaderboard.GetScore(OnGetScoreCompleted, new GetScoreYandexOptions("MaximumPointsss"));
+        Bridge.leaderboard.GetEntries(OnGetEntriesComplete, new GetEntriesYandexOptions("MaximumPointsss", true, 6, 0));
+        Bridge.storage.Get("buffs", OnStorageGetCompletedBuff);
         Bridge.storage.Get("debuffs", OnStorageGetCompletedDebuff);
     }
 
@@ -36,6 +29,14 @@ static public class Yandexholder
         Bridge.storage.Set("buffs", data, OnStorageSetCompleted);
     }
 
+    static public void SaveScore()
+    {
+        if (ScorePlayer < DataHolder.TotalNumberPointsScored)
+        {
+            Bridge.leaderboard.SetScore(new SetScoreYandexOptions(DataHolder.TotalNumberPointsScored, "MaximumPointsss"));
+        }
+    }
+
     static public void SaveDebuffs(List<Effect> list)
     {
         var combinedList = list.Concat(KnowDebuffs).Distinct().ToList();
@@ -45,14 +46,14 @@ static public class Yandexholder
 
     }
 
-    static void OnStorageGetCompleted(bool success, string data)
+    static void OnStorageGetCompletedBuff(bool success, string data)
     {
         if (success)
         {
             if (data != null)
             {
                 var _knowBuffsNumber = Array.ConvertAll(data.Split(' '), s => int.Parse(s));
-                KnowBuffs = new Effects().List.Where(o => _knowBuffsNumber.Contains(o.Id)).OrderBy(b => b.Difficulty).ToList();
+                KnowBuffs = new Effects().Buffs.Where(o => _knowBuffsNumber.Contains(o.Id)).OrderBy(b => b.Difficulty).ToList();
             }
             else
             {
@@ -72,7 +73,7 @@ static public class Yandexholder
             if (data != null)
             {
                 var _knowDebuffsNumber = Array.ConvertAll(data.Split(' '), s => int.Parse(s));
-                KnowDebuffs = new Effects().List.Where(o => _knowDebuffsNumber.Contains(o.Id)).ToList();
+                KnowDebuffs = new Effects().Debuffs.Where(o => _knowDebuffsNumber.Contains(o.Id)).ToList();
             }
             else
             {
@@ -95,6 +96,18 @@ static public class Yandexholder
         if (success)
         {
             Players = entries;
+        }
+    }
+
+    static void OnGetScoreCompleted(bool success, int score)
+    {
+        if (success)
+        {
+            ScorePlayer = score;
+        }
+        else
+        {
+            // Что-то пошло не так
         }
     }
 }

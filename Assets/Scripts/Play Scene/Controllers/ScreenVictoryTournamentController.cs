@@ -1,6 +1,3 @@
-using InstantGamesBridge.Modules.Leaderboard;
-using InstantGamesBridge;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -46,12 +43,11 @@ namespace Deck
                 _view.AmountPoints = _informationPlayer.PointsPlayer + " " + ChooseWord(_informationPlayer.PointsPlayer.ToString());
                 _view.NameBlind = DefaultLevels.Levels.FirstOrDefault(level => level.NumberLevel == DataHolder.CurrentLevel).Name;
 
-               
-                _view.gameObject.SetActive(true);
-                DataHolder.TotalNumberPointsScored += _informationPlayer.PointsPlayer;
 
-                Bridge.leaderboard.SetScore(new SetScoreYandexOptions(DataHolder.TotalNumberPointsScored, "MaximumPoints"));
-                Yandexholder.SaveDebuffs(new List<Effect>{ DataHolder.Debuff});
+                _view.gameObject.SetActive(true);
+
+                Yandexholder.SaveScore();
+                Yandexholder.SaveDebuffs(new List<Effect> { DataHolder.Debuff });
             }
         }
 
@@ -59,12 +55,12 @@ namespace Deck
         {
             for (var i = 0; i < DataHolder.Buffs.Count; i++)
             {
-                _view.Buffs.GetBuffView(i).Description = DataHolder.Buffs[i].Description;
-                _view.Buffs.GetBuffView(i).ImageSprite = DataHolder.Buffs[i].Sprite;
+                _view.Buffs.GetEffectView(i).Description = DataHolder.Buffs[i].Description;
+                _view.Buffs.GetEffectView(i).ImageSprite = DataHolder.Buffs[i].Sprite;
             }
             for (var i = 4; i >= DataHolder.Buffs.Count; i--)
             {
-                _view.Buffs.GetBuffView(i).gameObject.SetActive(false);
+                _view.Buffs.GetEffectView(i).gameObject.SetActive(false);
             }
         }
     }

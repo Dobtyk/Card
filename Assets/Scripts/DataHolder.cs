@@ -4,7 +4,6 @@ namespace Deck
 {
     static public class DataHolder
     {
-        public static int PlayerPointsOnLevel;
         static public int MaxAmountHands;
         static public int MaxAmountResets;
         static public int MaxLevel;
@@ -22,7 +21,6 @@ namespace Deck
         public static void InitializeNewGame()
         {
             CurrentLevel = 1;
-            PlayerPointsOnLevel = 0;
             MaxAmountHands = 3;
             MaxAmountResets = 3;
             MaxLevel = 8;

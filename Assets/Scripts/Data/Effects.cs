@@ -10,7 +10,7 @@ namespace Deck
     [Serializable]
     public class Effects
     {
-        public List<Effect> List = new List<Effect>
+        public List<Effect> Buffs = new List<Effect>
         {
             new Pair100(),
             new TwoPairs100(),
@@ -41,6 +41,14 @@ namespace Deck
             new Factor4(),
             new Factor15(),
         };
+
+        public List<Effect> Debuffs = new List<Effect>
+        {
+            new Heart(),
+            new Diamond(),
+            new Spade(),
+            new Club(),
+        };
     }
 
     public class UnknownDebuff : Effect
@@ -52,9 +60,9 @@ namespace Deck
         }
     }
 
-    public class Unknown : Effect
+    public class UnknownBuff : Effect
     {
-        public Unknown()
+        public UnknownBuff()
         {
             Description = "Неизвестно";
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Unknown");
@@ -76,9 +84,9 @@ namespace Deck
         {
             if (new OnePair().Check(hand))
             {
-                return (100, 0, 0);
+                return (100, 0, 1);
             }
-            return (0, 0, 0);
+            return (0, 0, 1);
         }
     }
 
@@ -97,9 +105,9 @@ namespace Deck
         {
             if (new TwoPairs().Check(hand))
             {
-                return (100, 0, 0);
+                return (100, 0, 1);
             }
-            return (0, 0, 0);
+            return (0, 0, 1);
         }
     }
 
@@ -118,9 +126,9 @@ namespace Deck
         {
             if (new Set().Check(hand))
             {
-                return (100, 0, 0);
+                return (100, 0, 1);
             }
-            return (0, 0, 0);
+            return (0, 0, 1);
         }
     }
 
@@ -129,7 +137,7 @@ namespace Deck
         public Heart3()
         {
             Id = 4;
-            Description = "Все карты масти червы получают +3 очка";
+            Description = "Все карты масти червы получают +3 очка к своим значениям";
             Difficulty = BuffDifficulty.Light;
             Type = BuffType.StaticBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Heart3");
@@ -146,7 +154,7 @@ namespace Deck
         public Diamond3()
         {
             Id = 5;
-            Description = "Все карты масти бубны получают +3 очка";
+            Description = "Все карты масти бубны получают +3 очка к своим значениям";
             Difficulty = BuffDifficulty.Light;
             Type = BuffType.StaticBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Diamond3");
@@ -163,7 +171,7 @@ namespace Deck
         public Club3()
         {
             Id = 6;
-            Description = "Все карты масти трефы получают +3 очка";
+            Description = "Все карты масти трефы получают +3 очка к своим значениям";
             Difficulty = BuffDifficulty.Light;
             Type = BuffType.StaticBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Club3");
@@ -180,7 +188,7 @@ namespace Deck
         public Spade3()
         {
             Id = 7;
-            Description = "Все карты масти пики получают +3 очка";
+            Description = "Все карты масти пики получают +3 очка к своим значениям";
             Difficulty = BuffDifficulty.Light;
             Type = BuffType.StaticBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Spade3");
@@ -207,9 +215,9 @@ namespace Deck
         {
             if (new OnePair().Check(hand))
             {
-                return (20, 1, 0);
+                return (20, 1, 1);
             }
-            return (0, 0, 0);
+            return (0, 0, 1);
         }
     }
 
@@ -228,9 +236,9 @@ namespace Deck
         {
             if (new TwoPairs().Check(hand))
             {
-                return (20, 1.5, 0);
+                return (20, 1.5, 1);
             }
-            return (0, 0, 0);
+            return (0, 0, 1);
         }
     }
 
@@ -239,7 +247,7 @@ namespace Deck
         public Figure50()
         {
             Id = 10;
-            Description = "Все карты туза, короля, дамы и валета дают +50 очков";
+            Description = "Все карты туза, короля, дамы и валета получают +50 очков к своим значениям";
             Difficulty = BuffDifficulty.Great;
             Type = BuffType.StaticBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Figure50");
@@ -264,7 +272,7 @@ namespace Deck
 
         public override (int, double, double) EnableEffectBuff(List<SlotCard> hand)
         {
-            return (100, 0, 0);
+            return (100, 0, 1);
         }
     }
 
@@ -317,9 +325,9 @@ namespace Deck
         {
             if (new Flush().Check(hand) || new Straight().Check(hand) || new FullHouse().Check(hand) || new FourofAKind().Check(hand) || new TwoPairs().Check(hand))
             {
-                return (150, 0, 0);
+                return (150, 0, 1);
             }
-            return (0, 0, 0);
+            return (0, 0, 1);
         }
     }
 
@@ -338,9 +346,9 @@ namespace Deck
         {
             if (new Flush().Check(hand) || new Straight().Check(hand) || new FullHouse().Check(hand))
             {
-                return (200, 0, 0);
+                return (200, 0, 1);
             }
-            return (0, 0, 0);
+            return (0, 0, 1);
         }
     }
 
@@ -359,9 +367,9 @@ namespace Deck
         {
             if (new Straight().Check(hand))
             {
-                return (150, 0, 0);
+                return (150, 0, 1);
             }
-            return (0, 0, 0);
+            return (0, 0, 1);
         }
     }
 
@@ -380,9 +388,9 @@ namespace Deck
         {
             if (new Flush().Check(hand))
             {
-                return (150, 0, 0);
+                return (150, 0, 1);
             }
-            return (0, 0, 0);
+            return (0, 0, 1);
         }
     }
 
@@ -401,9 +409,9 @@ namespace Deck
         {
             if (new FullHouse().Check(hand))
             {
-                return (200, 0, 0);
+                return (200, 0, 1);
             }
-            return (0, 0, 0);
+            return (0, 0, 1);
         }
     }
 
@@ -422,9 +430,9 @@ namespace Deck
         {
             if (new FourofAKind().Check(hand))
             {
-                return (200, 0, 0);
+                return (200, 0, 1);
             }
-            return (0, 0, 0);
+            return (0, 0, 1);
         }
     }
 
@@ -443,9 +451,9 @@ namespace Deck
         {
             if (new Set().Check(hand))
             {
-                return (25, 2, 0);
+                return (25, 2, 1);
             }
-            return (0, 0, 0);
+            return (0, 0, 1);
         }
     }
 
@@ -464,9 +472,9 @@ namespace Deck
         {
             if (new Straight().Check(hand))
             {
-                return (25, 2.5, 0);
+                return (25, 2.5, 1);
             }
-            return (0, 0, 0);
+            return (0, 0, 1);
         }
     }
 
@@ -485,9 +493,9 @@ namespace Deck
         {
             if (new Flush().Check(hand))
             {
-                return (30, 3, 0);
+                return (30, 3, 1);
             }
-            return (0, 0, 0);
+            return (0, 0, 1);
         }
     }
 
@@ -506,9 +514,9 @@ namespace Deck
         {
             if (new FullHouse().Check(hand))
             {
-                return (30, 3.5, 0);
+                return (30, 3.5, 1);
             }
-            return (0, 0, 0);
+            return (0, 0, 1);
         }
     }
 
@@ -527,9 +535,9 @@ namespace Deck
         {
             if (new FourofAKind().Check(hand))
             {
-                return (35, 4, 0);
+                return (35, 4, 1);
             }
-            return (0, 0, 0);
+            return (0, 0, 1);
         }
     }
 
@@ -550,7 +558,7 @@ namespace Deck
             {
                 return (0, 0, 2);
             }
-            return (0, 0, 0);
+            return (0, 0, 1);
         }
     }
 
@@ -568,7 +576,7 @@ namespace Deck
         public override (int, double, double) EnableEffectBuff(List<SlotCard> hand)
         {
             var combinations = new ICombinationAnalyzer[] { new RoyalFlush(), new StraightFlush(), new FourofAKind(), new FullHouse(), new Flush(), new Straight(), new Set(), new TwoPairs(), new OnePair(), new HighCard() };
-            var result = (0, combinations.FirstOrDefault(combination => combination.Check(hand)).Cards.Where(c => (int)c.CardValue >= 9 && (int)c.CardValue <= 12).Count() * 1.5, 0);
+            var result = (0, combinations.FirstOrDefault(combination => combination.Check(hand)).Cards.Where(c => (int)c.CardValue >= 9 && (int)c.CardValue <= 12).Count() * 1.5, 1);
             return result;
         }
     }
@@ -586,7 +594,7 @@ namespace Deck
 
         public override (int, double, double) EnableEffectBuff(List<SlotCard> hand)
         {
-            return (0, 4, 0);
+            return (0, 4, 1);
         }
     }
 
@@ -607,9 +615,15 @@ namespace Deck
             {
                 return (0, 0, 15);
             }
-            return (0, 0, 0);
+            return (0, 0, 1);
         }
     }
+
+
+
+
+
+
 
     public class Heart : Effect
     {

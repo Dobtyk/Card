@@ -1,7 +1,4 @@
 using Deck;
-using InstantGamesBridge;
-using System.Linq;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,19 +10,12 @@ public class EntryPoint : MonoBehaviour
 
     void Awake()
     {
-        Yandexholder.LoadBuffs();
-        Yandexholder.LoadDebuffs();
-        Yandexholder.LoadPlayers();
+        Yandexholder.LoadInformation();
     }
 
     void LoadMainMenu()
     {
         _screenMainMenuController = new ScreenMainMenuController(_screenMainMenuView);
-    }
-
-    void OnStorageSetCompleted(bool success)
-    {
-        Debug.Log($"OnStorageSetCompleted, success: {success}");
     }
 
 

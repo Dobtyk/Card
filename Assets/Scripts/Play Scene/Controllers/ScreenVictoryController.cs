@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace Deck
@@ -58,18 +57,18 @@ namespace Deck
                 {
                     _view.BuffsView.gameObject.SetActive(false);
                 }
-                for (var i  = 0; i < 3; i++)
-                {     
-                    _view.BuffsView.GetBuffView(i).Description = _buffs[i].Description;
-                    _view.BuffsView.GetBuffView(i).ImageSprite = _buffs[i].Sprite;
+                for (var i = 0; i < 3; i++)
+                {
+                    _view.BuffsView.GetEffectView(i).Description = _buffs[i].Description;
+                    _view.BuffsView.GetEffectView(i).ImageSprite = _buffs[i].Sprite;
                 }
-               
+
                 _view.gameObject.SetActive(true);
-                DataHolder.TotalNumberPointsScored += _informationPlayer.PointsPlayer;
+
                 if (DataHolder.CurrentLevel == 7)
                 {
-                    var debuffs = new List<Effect> { new Heart(), new Diamond(), new Club(), new Spade() };
                     var random = new Random();
+                    var debuffs = new Effects().Debuffs;
                     DataHolder.Debuff = debuffs[random.Next(0, debuffs.Count)];
                 }
             }

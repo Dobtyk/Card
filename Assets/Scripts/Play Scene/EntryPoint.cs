@@ -151,7 +151,7 @@ namespace Deck
             {
                 difficulty = BuffDifficulty.Great;
             }
-            var list = buffs.List.FindAll(b => b.Difficulty == difficulty);
+            var list = buffs.Buffs.FindAll(b => b.Difficulty == difficulty);
             var index = random.Next(0, list.Count());
             var result = list[index];
             return result;
@@ -161,9 +161,10 @@ namespace Deck
         {
             var result = new List<Effect>();
             var buffs = new Effects();
-            for (var i = 0; i < 3; i++)
+            while (result.Count() < 3)
             {
                 result.Add(GetBuff(buffs));
+                result = result.Distinct().ToList();
             }
             return result;
         }
@@ -211,7 +212,12 @@ namespace Deck
                 DataHolder.LastCombination = _screenPlayView.InformationPlayerView.CurrentCombinationView.NameCombination;
                 _informationPlayer.NumberCardsDeckRound -= _selectedÑardsIndex.Count;
                 _informationPlayer.AmountHands -= 1;
-                _informationPlayer.PointsPlayer += CountPlayerPoints();
+
+                var playerPoints = CountPlayerPoints();
+
+                DataHolder.TotalNumberPointsScored += playerPoints;
+                _informationPlayer.PointsPlayer += playerPoints;
+
                 UpdateCurrentHand();
             }
         }

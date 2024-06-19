@@ -5,11 +5,11 @@ namespace Deck
 
     public class EffectsView : MonoBehaviour
     {
-        [SerializeField] EffectView[] _buffs;
+        [SerializeField] EffectView[] _effects;
 
-        public EffectView GetBuffView(int index)
+        public EffectView GetEffectView(int index)
         {
-            return _buffs[index];
+            return _effects[index];
         }
     }
 }

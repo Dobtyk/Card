@@ -34,13 +34,13 @@ public class ScreenMainMenuController
     {
         for (var i = 0; i < Yandexholder.KnowBuffs.Count(); i++)
         {
-            _view.BuffsView.GetBuffView(i).Description = Yandexholder.KnowBuffs[i].Description;
-            _view.BuffsView.GetBuffView(i).ImageSprite = Yandexholder.KnowBuffs[i].Sprite;
+            _view.BuffsView.GetEffectView(i).Description = Yandexholder.KnowBuffs[i].Description;
+            _view.BuffsView.GetEffectView(i).ImageSprite = Yandexholder.KnowBuffs[i].Sprite;
         }
         for (var i = Yandexholder.KnowBuffs.Count(); i < 28; i++)
         {
-            _view.BuffsView.GetBuffView(i).Description = new Unknown().Description;
-            _view.BuffsView.GetBuffView(i).ImageSprite = new Unknown().Sprite;
+            _view.BuffsView.GetEffectView(i).Description = new UnknownBuff().Description;
+            _view.BuffsView.GetEffectView(i).ImageSprite = new UnknownBuff().Sprite;
         }
     }
 
@@ -48,13 +48,13 @@ public class ScreenMainMenuController
     {
         for (var i = 0; i < Yandexholder.KnowDebuffs.Count(); i++)
         {
-            _view.DebuffsView.GetBuffView(i).Description = Yandexholder.KnowDebuffs[i].Description;
-            _view.DebuffsView.GetBuffView(i).ImageSprite = Yandexholder.KnowDebuffs[i].Sprite;
+            _view.DebuffsView.GetEffectView(i).Description = Yandexholder.KnowDebuffs[i].Description;
+            _view.DebuffsView.GetEffectView(i).ImageSprite = Yandexholder.KnowDebuffs[i].Sprite;
         }
         for (var i = Yandexholder.KnowDebuffs.Count(); i < 4; i++)
         {
-            _view.DebuffsView.GetBuffView(i).Description = new UnknownDebuff().Description;
-            _view.DebuffsView.GetBuffView(i).ImageSprite = new UnknownDebuff().Sprite;
+            _view.DebuffsView.GetEffectView(i).Description = new UnknownDebuff().Description;
+            _view.DebuffsView.GetEffectView(i).ImageSprite = new UnknownDebuff().Sprite;
         }
     }
 }

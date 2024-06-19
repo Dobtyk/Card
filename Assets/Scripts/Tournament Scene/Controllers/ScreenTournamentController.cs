@@ -47,12 +47,12 @@ namespace Deck
         {
             for (var i = 0; i < DataHolder.Buffs.Count; i++)
             {
-                _view.BuffsView.GetBuffView(i).Description = DataHolder.Buffs[i].Description;
-                _view.BuffsView.GetBuffView(i).ImageSprite = DataHolder.Buffs[i].Sprite;
+                _view.BuffsView.GetEffectView(i).Description = DataHolder.Buffs[i].Description;
+                _view.BuffsView.GetEffectView(i).ImageSprite = DataHolder.Buffs[i].Sprite;
             }
             for (var i = 4; i >= DataHolder.Buffs.Count; i--)
             {
-                _view.BuffsView.GetBuffView(i).gameObject.SetActive(false);
+                _view.BuffsView.GetEffectView(i).gameObject.SetActive(false);
             }
         }
 
