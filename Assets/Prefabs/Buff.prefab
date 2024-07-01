@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5727049251369101361}
   - component: {fileID: 4013414377299360353}
   - component: {fileID: 1110293506219013865}
+  - component: {fileID: 2737868048064284700}
   - component: {fileID: 1498392178738763008}
   m_Layer: 5
   m_Name: Buff
@@ -143,11 +144,35 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2737868048064284700}
+        m_TargetAssemblyTypeName: ButtonAudio, Assembly-CSharp
+        m_MethodName: ClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2737868048064284700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120368900298872532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ab75b31ce2d9d44891ed12774bd5375, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1498392178738763008
 MonoBehaviour:
   m_ObjectHideFlags: 0

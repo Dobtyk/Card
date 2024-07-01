@@ -13,5 +13,6 @@ namespace Deck
         public int ChanceGreatBuff;
         public string Name;
         public Sprite Icon;
+        public bool IsDebuff;
     }
 }

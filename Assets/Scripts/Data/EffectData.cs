@@ -11,11 +11,13 @@ namespace Deck
         Great
     }
 
-    public enum BuffType
+    public enum EffectType
     { 
         StaticBuff,
+        StaticDebuff,
         AfterCountingBuff,
-        BeforeCountingBuff
+        BeforeCountingBuff,
+        BeforeCountingDebuff
     }
 
     public interface IReadOnlyEffect
@@ -26,7 +28,7 @@ namespace Deck
 
         public BuffDifficulty Difficulty { get; }
 
-        public BuffType Type { get; }
+        public EffectType Type { get; }
 
         public Sprite Sprite { get; }
 
@@ -41,7 +43,7 @@ namespace Deck
 
         public BuffDifficulty Difficulty { get; set; }
 
-        public BuffType Type { get; set; }
+        public EffectType Type { get; set; }
 
         public Sprite Sprite { get; set; }
 
@@ -78,6 +80,11 @@ namespace Deck
         public virtual List<SlotCard> EnableEffectDebuff(List<SlotCard> list)
         {
             return null;
+        }
+
+        public virtual void EnableEffectDebuff()
+        {
+
         }
     }
 }

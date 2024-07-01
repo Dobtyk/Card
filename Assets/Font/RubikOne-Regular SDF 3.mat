@@ -79,7 +79,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0.39157256, g: 0.1811643, b: 0.12213881, a: 1}
+    - _OutlineColor: {r: 0.65882355, g: 0.4627451, b: 0.38431373, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _UnderlayColor: {r: 0.11953845, g: 0.1559265, b: 0.005181517, a: 1}
   m_BuildTextureStacks: []

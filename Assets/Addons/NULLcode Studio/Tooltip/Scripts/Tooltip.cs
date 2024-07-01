@@ -66,7 +66,12 @@ public class Tooltip : MonoBehaviour {
 		}
 		else
 		{
-			RaycastHit2D hit = Physics2D.Raycast(_camera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            Vector3 mousePosition = Input.mousePosition;
+            if (float.IsInfinity(mousePosition.x) || float.IsInfinity(mousePosition.y))
+            {
+                mousePosition = Vector3.zero;
+            }
+            RaycastHit2D hit = Physics2D.Raycast(_camera.ScreenToWorldPoint(mousePosition), Vector2.zero);
 			if(hit.transform != null)
 			{
 				if(hit.transform.GetComponent<TooltipText>())

@@ -43,7 +43,11 @@ static public class Yandexholder
         KnowDebuffs = combinedList;
         var data = string.Join(" ", combinedList.Select(b => b.Id.ToString()).ToList());
         Bridge.storage.Set("debuffs", data, OnStorageSetCompleted);
+    }
 
+    static public void ShowAdvertising()
+    {
+        Bridge.advertisement.ShowInterstitial();
     }
 
     static void OnStorageGetCompletedBuff(bool success, string data)

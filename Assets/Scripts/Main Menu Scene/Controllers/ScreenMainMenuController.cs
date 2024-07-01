@@ -37,7 +37,7 @@ public class ScreenMainMenuController
             _view.BuffsView.GetEffectView(i).Description = Yandexholder.KnowBuffs[i].Description;
             _view.BuffsView.GetEffectView(i).ImageSprite = Yandexholder.KnowBuffs[i].Sprite;
         }
-        for (var i = Yandexholder.KnowBuffs.Count(); i < 28; i++)
+        for (var i = Yandexholder.KnowBuffs.Count(); i < new Effects().Buffs.Count; i++)
         {
             _view.BuffsView.GetEffectView(i).Description = new UnknownBuff().Description;
             _view.BuffsView.GetEffectView(i).ImageSprite = new UnknownBuff().Sprite;
@@ -51,7 +51,7 @@ public class ScreenMainMenuController
             _view.DebuffsView.GetEffectView(i).Description = Yandexholder.KnowDebuffs[i].Description;
             _view.DebuffsView.GetEffectView(i).ImageSprite = Yandexholder.KnowDebuffs[i].Sprite;
         }
-        for (var i = Yandexholder.KnowDebuffs.Count(); i < 4; i++)
+        for (var i = Yandexholder.KnowDebuffs.Count(); i < new Effects().Debuffs.Count; i++)
         {
             _view.DebuffsView.GetEffectView(i).Description = new UnknownDebuff().Description;
             _view.DebuffsView.GetEffectView(i).ImageSprite = new UnknownDebuff().Sprite;

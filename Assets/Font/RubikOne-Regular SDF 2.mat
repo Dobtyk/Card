@@ -69,7 +69,7 @@ Material:
     - _TextureWidth: 1024
     - _UnderlayDilate: 0.1
     - _UnderlayOffsetX: 0
-    - _UnderlayOffsetY: -0.35
+    - _UnderlayOffsetY: -0.4
     - _UnderlaySoftness: 0
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0
@@ -80,7 +80,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0.27049786, g: 0.35640025, b: 0.008023192, a: 1}
+    - _OutlineColor: {r: 0.5568628, g: 0.6313726, b: 0.08627451, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _UnderlayColor: {r: 0.11953845, g: 0.1559265, b: 0.005181517, a: 1}
+    - _UnderlayColor: {r: 0.38039216, g: 0.43137255, b: 0.0627451, a: 1}
   m_BuildTextureStacks: []

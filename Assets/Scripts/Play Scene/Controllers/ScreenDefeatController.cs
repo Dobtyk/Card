@@ -1,6 +1,5 @@
-using InstantGamesBridge;
-using InstantGamesBridge.Modules.Leaderboard;
 using System.Linq;
+using UnityEngine;
 
 namespace Deck
 {
@@ -27,6 +26,11 @@ namespace Deck
                 _view.NumberPointsScored = DataHolder.TotalNumberPointsScored.ToString();
                 _view.NumberResetsUsed = DataHolder.NumberResetsUsed.ToString();
                 _view.NumberCardsPlayed = DataHolder.NumberCardsPlayed.ToString();
+
+                if (DefaultLevels.Levels.FirstOrDefault(level => level.NumberLevel == DataHolder.CurrentLevel).IsDebuff)
+                {
+                    AudioManager.Instance.ToggleMusic(Resources.Load<AudioClip>("Sound/Alternate_Card_Playing_Music"));
+                }
 
                 Yandexholder.SaveScore();
             }

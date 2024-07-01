@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Deck
 {
@@ -42,7 +43,7 @@ namespace Deck
             {
                 _view.AmountPoints = _informationPlayer.PointsPlayer + " " + ChooseWord(_informationPlayer.PointsPlayer.ToString());
                 _view.NameBlind = DefaultLevels.Levels.FirstOrDefault(level => level.NumberLevel == DataHolder.CurrentLevel).Name;
-
+                AudioManager.Instance.ToggleMusic(Resources.Load<AudioClip>("Sound/Alternate_Card_Playing_Music"));
 
                 _view.gameObject.SetActive(true);
 

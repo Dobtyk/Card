@@ -1,3 +1,4 @@
+using InstantGamesBridge;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -31,6 +32,10 @@ namespace Deck
 
         void Awake()
         {
+            if (DefaultLevels.Levels.FirstOrDefault(level => level.NumberLevel == DataHolder.CurrentLevel).IsDebuff)
+            {
+                AudioManager.Instance.ToggleMusic(Resources.Load<AudioClip>("Sound/Boss_Battle_Loop_1"));
+            }
             LoadLevel();
         }
 
@@ -98,8 +103,10 @@ namespace Deck
             {
                 selectedÑards.Add(_playerHand.CardsPlayerHand[item]);
             }
-            if (DataHolder.Debuff != null)
+            if (DataHolder.Debuff != null && DataHolder.Debuff.Type == EffectType.BeforeCountingDebuff)
+            {
                 selectedÑards = DataHolder.Debuff.EnableEffectDebuff(selectedÑards);
+            }
             var result = FindPokerHand.AnalyzeCombinations.Check(selectedÑards);
             (_currentCombination.Name, _currentCombination.Chips, _currentCombination.Factor, _currentCombination.Cards) = (result.Item1, result.Item2, result.Item3, result.Item4);
         }
@@ -117,13 +124,13 @@ namespace Deck
                 foreach (var item in _selectedÑardsIndex)
                     selectedÑards.Add(_playerHand.CardsPlayerHand[item]);
 
-                if (buff.Type == BuffType.BeforeCountingBuff)
+                if (buff.Type == EffectType.BeforeCountingBuff)
                 {
                     (var extraChips, var extraFactor, var extraFactorMultiply) = buff.EnableEffectBuff(selectedÑards);
                     factorMultiply *= extraFactorMultiply;
                     (chips, factor) = (chips + extraChips, factor + extraFactor);
                 }
-                else if (buff.Type == BuffType.AfterCountingBuff)
+                else if (buff.Type == EffectType.AfterCountingBuff)
                 {
                     points += buff.EnableEffectBuff(selectedÑards).Item1;
                 }
@@ -173,7 +180,7 @@ namespace Deck
         {
             DataHolder.Buffs.Add(_buffs[index]);
             _buffs[index].IsSelect = true;
-            if (_buffs[index].Type == BuffType.StaticBuff)
+            if (_buffs[index].Type == EffectType.StaticBuff)
             {
                 _buffs[index].EnableEffectBuff();
             }
@@ -277,6 +284,7 @@ namespace Deck
 
         public void ClickOnButtonExit(int numberScene)
         {
+            Yandexholder.SaveScore();
             SceneManager.LoadScene(numberScene);
         }
 

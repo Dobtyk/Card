@@ -16,7 +16,12 @@ namespace Tournament
 
         void Awake()
         {
+            if (DataHolder.Debuff != null && DataHolder.Debuff.Type == EffectType.StaticDebuff)
+            {
+                DataHolder.Debuff.EnableEffectDebuff();
+            }
             _screenTournamentController = new ScreenTournamentController(_screenTournamentView);
+            Yandexholder.ShowAdvertising();
         }
 
         public void ClickOnButtonMainMenu(int numberScene)

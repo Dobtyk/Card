@@ -39,7 +39,7 @@ namespace Deck
             new Figure2(),
             new Figure15(),
             new Factor4(),
-            new Factor15(),
+            new Factor15()
         };
 
         public List<Effect> Debuffs = new List<Effect>
@@ -48,6 +48,7 @@ namespace Deck
             new Diamond(),
             new Spade(),
             new Club(),
+            new Reset1()
         };
     }
 
@@ -76,7 +77,7 @@ namespace Deck
             Id = 1;
             Description = "Очки +100, если рука содержит пару (после подсчёта очков)";
             Difficulty = BuffDifficulty.Light;
-            Type = BuffType.AfterCountingBuff;
+            Type = EffectType.AfterCountingBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Pair100");
         }
 
@@ -97,7 +98,7 @@ namespace Deck
             Id = 2;
             Description = "Очки +100, если рука содержит две пары (после подсчёта очков)";
             Difficulty = BuffDifficulty.Light;
-            Type = BuffType.AfterCountingBuff;
+            Type = EffectType.AfterCountingBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/TwoPairs100");
         }
 
@@ -118,7 +119,7 @@ namespace Deck
             Id = 3;
             Description = "Очки +100, если рука содержит тройку (после подсчёта очков)";
             Difficulty = BuffDifficulty.Light;
-            Type = BuffType.AfterCountingBuff;
+            Type = EffectType.AfterCountingBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Set100");
         }
 
@@ -139,7 +140,7 @@ namespace Deck
             Id = 4;
             Description = "Все карты масти червы получают +3 очка к своим значениям";
             Difficulty = BuffDifficulty.Light;
-            Type = BuffType.StaticBuff;
+            Type = EffectType.StaticBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Heart3");
         }
 
@@ -156,7 +157,7 @@ namespace Deck
             Id = 5;
             Description = "Все карты масти бубны получают +3 очка к своим значениям";
             Difficulty = BuffDifficulty.Light;
-            Type = BuffType.StaticBuff;
+            Type = EffectType.StaticBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Diamond3");
         }
 
@@ -173,7 +174,7 @@ namespace Deck
             Id = 6;
             Description = "Все карты масти трефы получают +3 очка к своим значениям";
             Difficulty = BuffDifficulty.Light;
-            Type = BuffType.StaticBuff;
+            Type = EffectType.StaticBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Club3");
         }
 
@@ -190,7 +191,7 @@ namespace Deck
             Id = 7;
             Description = "Все карты масти пики получают +3 очка к своим значениям";
             Difficulty = BuffDifficulty.Light;
-            Type = BuffType.StaticBuff;
+            Type = EffectType.StaticBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Spade3");
         }
 
@@ -207,7 +208,7 @@ namespace Deck
             Id = 8;
             Description = "Очки +20, множитель +1, если рука содержит пару (перед подсчётом очков)";
             Difficulty = BuffDifficulty.Light;
-            Type = BuffType.BeforeCountingBuff;
+            Type = EffectType.BeforeCountingBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/OnePair20");
         }
 
@@ -228,7 +229,7 @@ namespace Deck
             Id = 9;
             Description = "Очки +20, множитель +1.5, если рука содержит две пары (перед подсчётом очков)";
             Difficulty = BuffDifficulty.Light;
-            Type = BuffType.BeforeCountingBuff;
+            Type = EffectType.BeforeCountingBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/TwoPairs20");
         }
 
@@ -249,7 +250,7 @@ namespace Deck
             Id = 10;
             Description = "Все карты туза, короля, дамы и валета получают +50 очков к своим значениям";
             Difficulty = BuffDifficulty.Great;
-            Type = BuffType.StaticBuff;
+            Type = EffectType.StaticBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Figure50");
         }
 
@@ -266,7 +267,7 @@ namespace Deck
             Id = 11;
             Description = "Очки +100 (после подсчёта очков)";
             Difficulty = BuffDifficulty.Medium;
-            Type = BuffType.AfterCountingBuff;
+            Type = EffectType.AfterCountingBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Get100");
         }
 
@@ -283,7 +284,7 @@ namespace Deck
             Id = 12;
             Description = "Количество рук +1";
             Difficulty = BuffDifficulty.Medium;
-            Type = BuffType.StaticBuff;
+            Type = EffectType.StaticBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/AmountHand1");
         }
 
@@ -300,7 +301,7 @@ namespace Deck
             Id = 13;
             Description = "Количество сбросов +1";
             Difficulty = BuffDifficulty.Medium;
-            Type = BuffType.StaticBuff;
+            Type = EffectType.StaticBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/AmountReset1");
         }
 
@@ -317,7 +318,7 @@ namespace Deck
             Id = 14;
             Description = "Очки +150, если комбинация состоит из 4-5 карт (после подсчёта очков)";
             Difficulty = BuffDifficulty.Medium;
-            Type = BuffType.AfterCountingBuff;
+            Type = EffectType.AfterCountingBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Hand150");
         }
 
@@ -338,7 +339,7 @@ namespace Deck
             Id = 15;
             Description = "Очки +200, если комбинация состоит из 5 карт (после подсчёта очков)";
             Difficulty = BuffDifficulty.Medium;
-            Type = BuffType.AfterCountingBuff;
+            Type = EffectType.AfterCountingBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Hand200");
         }
 
@@ -359,7 +360,7 @@ namespace Deck
             Id = 16;
             Description = "Очки +150, если рука содержит стрит (после подсчёта очков)";
             Difficulty = BuffDifficulty.Medium;
-            Type = BuffType.AfterCountingBuff;
+            Type = EffectType.AfterCountingBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Straight150");
         }
 
@@ -380,7 +381,7 @@ namespace Deck
             Id = 17;
             Description = "Очки +150, если рука содержит флеш (после подсчёта очков)";
             Difficulty = BuffDifficulty.Medium;
-            Type = BuffType.AfterCountingBuff;
+            Type = EffectType.AfterCountingBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Flush150");
         }
 
@@ -401,7 +402,7 @@ namespace Deck
             Id = 18;
             Description = "Очки +200, если рука содержит фулл-хаус (после подсчёта очков)";
             Difficulty = BuffDifficulty.Medium;
-            Type = BuffType.AfterCountingBuff;
+            Type = EffectType.AfterCountingBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/FullHouse200");
         }
 
@@ -422,7 +423,7 @@ namespace Deck
             Id = 19;
             Description = "Очки +200, если рука содержит каре (после подсчёта очков)";
             Difficulty = BuffDifficulty.Medium;
-            Type = BuffType.AfterCountingBuff;
+            Type = EffectType.AfterCountingBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/FourofAKind200");
         }
 
@@ -443,7 +444,7 @@ namespace Deck
             Id = 20;
             Description = "Очки +25, множитель +2, если рука содержит тройку (перед подсчётом очков)";
             Difficulty = BuffDifficulty.Medium;
-            Type = BuffType.BeforeCountingBuff;
+            Type = EffectType.BeforeCountingBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Set25");
         }
 
@@ -464,7 +465,7 @@ namespace Deck
             Id = 21;
             Description = "Очки +25, множитель +2.5, если рука содержит стрит (перед подсчётом очков)";
             Difficulty = BuffDifficulty.Medium;
-            Type = BuffType.BeforeCountingBuff;
+            Type = EffectType.BeforeCountingBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Straight25");
         }
 
@@ -485,7 +486,7 @@ namespace Deck
             Id = 22;
             Description = "Очки +30, множитель +3, если рука содержит флеш (перед подсчётом очков)";
             Difficulty = BuffDifficulty.Great;
-            Type = BuffType.BeforeCountingBuff;
+            Type = EffectType.BeforeCountingBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Flush30");
         }
 
@@ -506,7 +507,7 @@ namespace Deck
             Id = 23;
             Description = "Очки +30, множитель +3.5, если рука содержит фулл-хаус (перед подсчётом очков)";
             Difficulty = BuffDifficulty.Great;
-            Type = BuffType.BeforeCountingBuff;
+            Type = EffectType.BeforeCountingBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/FullHouse30");
         }
 
@@ -527,7 +528,7 @@ namespace Deck
             Id = 24;
             Description = "Очки +35, множитель +4, если рука содержит каре (перед подсчётом очков)";
             Difficulty = BuffDifficulty.Great;
-            Type = BuffType.BeforeCountingBuff;
+            Type = EffectType.BeforeCountingBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/FourofAKind35");
         }
 
@@ -548,7 +549,7 @@ namespace Deck
             Id = 25;
             Description = "При наличии в руке минимум 1 карты туза, короля, дамы или валета множитель *2 (перед подсчётом очков)";
             Difficulty = BuffDifficulty.Great;
-            Type = BuffType.BeforeCountingBuff;
+            Type = EffectType.BeforeCountingBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Figure2");
         }
 
@@ -569,7 +570,7 @@ namespace Deck
             Id = 26;
             Description = "Каждая участвующая карта туза, короля, дамы и валета в комбинации даёт множитель +1,5 (перед подсчётом очков)";
             Difficulty = BuffDifficulty.Great;
-            Type = BuffType.BeforeCountingBuff;
+            Type = EffectType.BeforeCountingBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Figure15");
         }
 
@@ -588,7 +589,7 @@ namespace Deck
             Id = 27;
             Description = "Множитель + 4 (перед подсчётом очков)";
             Difficulty = BuffDifficulty.Great;
-            Type = BuffType.BeforeCountingBuff;
+            Type = EffectType.BeforeCountingBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Factor4");
         }
 
@@ -605,7 +606,7 @@ namespace Deck
             Id = 28;
             Description = "Множитель *15 ,если комбинация - Тройка (перед подсчётом очков)";
             Difficulty = BuffDifficulty.Great;
-            Type = BuffType.BeforeCountingBuff;
+            Type = EffectType.BeforeCountingBuff;
             Sprite = Resources.Load<Sprite>("Effects/Buffs/Factor15");
         }
 
@@ -631,6 +632,7 @@ namespace Deck
         {
             Id = 29;
             Description = "Карты масти червы не учитываются при подсчёте";
+            Type = EffectType.BeforeCountingDebuff;
             Sprite = Resources.Load<Sprite>("Effects/Debuffs/Heart");
         }
 
@@ -646,6 +648,7 @@ namespace Deck
         {
             Id = 30;
             Description = "Карты масти пики не учитываются при подсчёте";
+            Type = EffectType.BeforeCountingDebuff;
             Sprite = Resources.Load<Sprite>("Effects/Debuffs/Spade");
         }
 
@@ -661,6 +664,7 @@ namespace Deck
         {
             Id = 31;
             Description = "Карты масти бубны не учитываются при подсчёте";
+            Type = EffectType.BeforeCountingDebuff;
             Sprite = Resources.Load<Sprite>("Effects/Debuffs/Diamond");
         }
 
@@ -676,12 +680,29 @@ namespace Deck
         {
             Id = 32;
             Description = "Карты масти трефы не учитываются при подсчёте";
+            Type = EffectType.BeforeCountingDebuff;
             Sprite = Resources.Load<Sprite>("Effects/Debuffs/Club");
         }
 
         public override List<SlotCard> EnableEffectDebuff(List<SlotCard> hand)
         {
             return hand.Where(c => c.Suit != SuitType.Club).ToList();
+        }
+    }
+
+    public class Reset1 : Effect 
+    {
+        public Reset1()
+        {
+            Id = 33;
+            Description = "Количество сбросов равно 1";
+            Type = EffectType.StaticDebuff;
+            Sprite = Resources.Load<Sprite>("Effects/Debuffs/Reset1");
+        }
+
+        public override void EnableEffectDebuff()
+        {
+            DataHolder.MaxAmountResets = 1;
         }
     }
 }

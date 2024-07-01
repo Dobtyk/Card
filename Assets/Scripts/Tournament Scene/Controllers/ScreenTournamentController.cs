@@ -19,7 +19,7 @@ namespace Deck
             FillItems();
             FillEnemy(_view.EnemyView);
             FillEnemy(_view.EnemyViewDebuff);
-            if (DataHolder.CurrentLevel == 8)
+            if (DefaultLevels.Levels.FirstOrDefault(level => level.NumberLevel == DataHolder.CurrentLevel).IsDebuff)
             {
                 _view.EnemyViewDebuff.gameObject.SetActive(true);
                 _view.EnemyView.gameObject.SetActive(false);
@@ -37,7 +37,7 @@ namespace Deck
             enemyView.MinimumPoints = DefaultLevels.Levels.FirstOrDefault(level => level.NumberLevel == DataHolder.CurrentLevel).Points.ToString();
             enemyView.NumberVictories = "Побед: " + (DataHolder.CurrentLevel - 1);
 
-            if (DataHolder.CurrentLevel == 8)
+            if (DefaultLevels.Levels.FirstOrDefault(level => level.NumberLevel == DataHolder.CurrentLevel).IsDebuff)
             {
                 enemyView.Description = DataHolder.Debuff.Description;
             }
