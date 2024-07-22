@@ -1,9 +1,7 @@
 using InstantGamesBridge;
 using InstantGamesBridge.Modules.Advertisement;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Rendering;
 
 public class AudioManager : MonoBehaviour
 {
